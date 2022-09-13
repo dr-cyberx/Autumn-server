@@ -1,0 +1,60 @@
+Arguments: 
+  /home/vishal/.nvm/versions/node/v14.17.0/bin/node /usr/bin/yarn add --dev @babel/preset-typescript
+
+PATH: 
+  /home/vishal/.nvm/versions/node/v14.17.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/vishal/sdks/flutter/bin:/home/vishal/sdks/flutter/bin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  14.17.0
+
+Platform: 
+  linux x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@babel/types/-/types-7.19.0.tgz: Request failed "503 Service Unavailable"
+      at ResponseError.ExtendableBuiltin (/usr/lib/node_modules/yarn/lib/cli.js:696:66)
+      at new ResponseError (/usr/lib/node_modules/yarn/lib/cli.js:802:124)
+      at Request.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:67099:16)
+      at Request.emit (events.js:376:20)
+      at Request.module.exports.Request.onRequestResponse (/usr/lib/node_modules/yarn/lib/cli.js:141760:10)
+      at ClientRequest.emit (events.js:376:20)
+      at HTTPParser.parserOnIncomingClient (_http_client.js:647:27)
+      at HTTPParser.parserOnHeadersComplete (_http_common.js:126:17)
+      at TLSSocket.socketOnData (_http_client.js:515:22)
+      at TLSSocket.emit (events.js:376:20)
+
+npm manifest: 
+  {
+    "name": "server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+      "dev":"nodemon src/server.ts",
+      "build":"tsc",
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "dotenv": "^16.0.2",
+      "express": "^4.18.1"
+    },
+    "devDependencies": {
+      "@types/express": "^4.17.13",
+      "@types/node": "^18.7.16",
+      "nodemon": "^2.0.19",
+      "ts-node": "^10.9.1",
+      "typescript": "^4.8.3"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
