@@ -1,8 +1,9 @@
-import express, { Request, Response } from "express";
+import express, { Request, Response, Express } from "express";
+import cors from "cors";
 import dotenv from "dotenv";
 import http from "http";
 
-const app = express();
+const app: Express = express();
 
 const server: ItypeServer = http.createServer(app);
 
@@ -17,6 +18,12 @@ const io: IOserver = new Server(server);
 dotenv.config({
   path: ".env",
 });
+
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+  })
+);
 
 app.use("/auth", authRoutes);
 

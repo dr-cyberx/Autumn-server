@@ -1,25 +1,25 @@
 import express, { NextFunction, Request, Response, Router } from "express";
+import User from "../db/models/users";
 import authPaths from "../utils/paths";
 
 const authRoute: Router = express.Router();
 
-authRoute.get(
+authRoute.post(
   authPaths.login,
-  async (req: Request, res: Response, next: NextFunction) => {}
+  async (req: Request, res: Response, next: NextFunction) => {
+    const newUser = new User({
+      email: "hello@gmail.com",
+      password: "admin@123",
+    });
+    await newUser.save();
+    res.json({
+      msg: "done !",
+    });
+  }
 );
 
 authRoute.get(
   authPaths.signup,
-  async (req: Request, res: Response, next: NextFunction) => {}
-);
-
-authRoute.get(
-  authPaths.forgot_password,
-  async (req: Request, res: Response, next: NextFunction) => {}
-);
-
-authRoute.get(
-  authPaths.is_valid_user,
   async (req: Request, res: Response, next: NextFunction) => {}
 );
 
