@@ -1,4 +1,3 @@
-import { compare, genSalt, hash } from "bcrypt";
 import mongoose, { model, Schema } from "mongoose";
 import {
   appendMethodToUser,

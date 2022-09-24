@@ -1,27 +1,17 @@
 import express, { NextFunction, Request, Response, Router } from "express";
+import { authSignUp } from "../DAO/authOperations";
 import User from "../db/models/users";
 import authPaths from "../utils/paths";
+import { generateResponseObj, sendResponse } from "../utils/sendResponse";
 
 const authRoute: Router = express.Router();
 
 authRoute.post(
   authPaths.login,
-  async (req: Request, res: Response, next: NextFunction) => {
-    const newUser = new User({
-      email: "hello@gmail.com",
-      password: "admin@123",
-    });
-    await newUser.save();
-    res.json({
-      msg: "done !",
-    });
-  }
-);
-
-authRoute.get(
-  authPaths.signup,
   async (req: Request, res: Response, next: NextFunction) => {}
 );
+
+authRoute.post(authPaths.signup, authSignUp);
 
 authRoute.get(
   authPaths.verify_phone_number,

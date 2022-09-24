@@ -12,12 +12,17 @@ import { Server } from "socket.io";
 import authRoutes from "../routes/auth";
 import connectDB from "../db/connectDB";
 import { IOserver, ItypeServer } from "../types/server";
+import { requestTime } from "../middlewares/others";
 
 const io: IOserver = new Server(server);
 
 dotenv.config({
   path: ".env",
 });
+
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(requestTime);
 
 app.use(
   cors({
@@ -31,6 +36,7 @@ app.get("/app/ishealthy", (req: Request, res: Response) => {
   res.json({
     message: "App is healthy",
     status: 200,
+    date: req.requestTime,
   });
 });
 

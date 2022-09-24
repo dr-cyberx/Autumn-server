@@ -5,7 +5,6 @@ export const hashUserPassword = (
   schemaName: mongoose.Schema
 ): mongoose.Schema =>
   schemaName.pre("save", function (next) {
-    console.log("This => ", this);
     const user = this;
     if (!user.isModified("password")) {
       return next();
@@ -18,7 +17,6 @@ export const hashUserPassword = (
         if (err1) {
           return next(err1);
         }
-        console.log(hash1);
         user.password = hash1;
         next();
       });
@@ -26,7 +24,9 @@ export const hashUserPassword = (
   });
 
 export const appendMethodToUser = (schemaName: mongoose.Schema) =>
-  (schemaName.methods.comparePassword = function (CandidatePassword: string | Buffer) {
+  (schemaName.methods.comparePassword = function (
+    CandidatePassword: string | Buffer
+  ) {
     const user = this;
     return new Promise((resolve, reject) => {
       compare(CandidatePassword, user.password, (err, isMatch) => {
@@ -42,4 +42,3 @@ export const appendMethodToUser = (schemaName: mongoose.Schema) =>
       });
     });
   });
-
