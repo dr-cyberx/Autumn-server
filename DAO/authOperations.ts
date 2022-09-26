@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import User from "../db/models/users";
+import { generateToken } from "../utils/generate_key";
 import { sendResponse, generateResponseObj } from "../utils/sendResponse";
 
 export const authSignUp = async (
@@ -14,12 +15,11 @@ export const authSignUp = async (
         password: req.body.password,
       })
         .save()
-        .then(({ email, password, _id }: any) => {
+        .then(({ _id }: any) => {
+          const { token } = generateToken(req.requestTime, _id);
           sendResponse(res, {
             ...generateResponseObj(200, "User Registered Successfully!", {
-              email,
-              password,
-              _id,
+              token,
             }),
           });
         })

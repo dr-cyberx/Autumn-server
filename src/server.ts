@@ -30,9 +30,9 @@ app.use(
   })
 );
 
-app.use("/auth", authRoutes);
+app.use("/autumn/auth", authRoutes);
 
-app.get("/app/ishealthy", (req: Request, res: Response) => {
+app.get("/autumn/app/ishealthy", (req: Request, res: Response) => {
   res.json({
     message: "App is healthy",
     status: 200,

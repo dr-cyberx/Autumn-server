@@ -3,7 +3,8 @@ import express from "express";
 declare global {
   namespace Express {
     interface Request {
-      requestTime?: number;
+      requestTime: number;
+      token: string | undefined;
     }
   }
 }
