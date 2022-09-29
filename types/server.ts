@@ -7,4 +7,14 @@ export type ItypeServer = http.Server<
   typeof http.ServerResponse
 >;
 
-export type IOserver = Server<DefaultEventsMap, DefaultEventsMap, DefaultEventsMap, any>
+export type IOserver = Server<
+  DefaultEventsMap,
+  DefaultEventsMap,
+  DefaultEventsMap,
+  any
+>;
+
+export type typeAuthBasicType = {
+  phoneNumber: string;
+  password: string;
+};

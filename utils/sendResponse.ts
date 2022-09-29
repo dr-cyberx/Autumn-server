@@ -7,20 +7,17 @@ export type iGenerateResponseObj = {
   token?: any;
 };
 
-export const generateResponseObj = (
+export const autumnResponse = (
+  res: Response,
   status: number = 404,
   message: string = "Reqest fullfilled successfully",
   data: any = {},
+  success: boolean = false,
   token?: any
-): iGenerateResponseObj => {
-  const resObj = { status, message, data };
+): void => {
+  const resObj = { status, message, data, success };
   if (token) {
     Object.assign(resObj, { token });
   }
-  return resObj;
+  res.json({ ...resObj });
 };
-
-export const sendResponse = (
-  res: Response,
-  responseObj: iGenerateResponseObj
-) => res.json({ ...responseObj });

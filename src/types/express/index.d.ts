@@ -5,6 +5,7 @@ declare global {
     interface Request {
       requestTime: number;
       token: string | undefined;
+      userData: { userId: string; email: string };
     }
   }
 }

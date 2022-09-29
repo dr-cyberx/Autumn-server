@@ -23,10 +23,12 @@ const userSchema: mongoose.Schema = new Schema(
     userName: {
       type: String,
       required: false,
+      unique: true,
     },
     email: {
       type: String,
       required: false,
+      unique: true,
     },
     password: {
       type: String,
@@ -34,7 +36,8 @@ const userSchema: mongoose.Schema = new Schema(
     },
     phoneNumber: {
       type: String,
-      required: false,
+      required: true,
+      unique: true,
     },
     isPhoneVerified: {
       type: Boolean,

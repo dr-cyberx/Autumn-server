@@ -1,15 +1,12 @@
 import express, { NextFunction, Request, Response, Router } from "express";
-import { authSignUp } from "../DAO/authOperations";
-import User from "../db/models/users";
+import { authLogin, authSignUp } from "../controllers/authOperations";
+import { isTokenExist } from "../middlewares/isTokenExist";
+import { decodeToken } from "../middlewares/verifyToken";
 import authPaths from "../utils/paths";
-import { generateResponseObj, sendResponse } from "../utils/sendResponse";
 
 const authRoute: Router = express.Router();
 
-authRoute.post(
-  authPaths.login,
-  async (req: Request, res: Response, next: NextFunction) => {}
-);
+authRoute.post(authPaths.login, authLogin);
 
 authRoute.post(authPaths.signup, authSignUp);
 
